@@ -33,18 +33,19 @@ switchFunc(action, input);
 //***** `node liri.js concert-this <artist/band name here>
 function concertThis(artist) {
     var bandURL = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp"
-
+    if (!artist) {
+       return console.log("Don't forget to include an artist name!")
+    };
     axios.get(bandURL).then(
         function (response) {
             var data = response.data[0];
             var date = moment(data.datetime, "YYYY-MM-DDTHH:mm:ss")
             var convertedDate = moment(date).format("MM/DD/YYYY")
             // console.log(JSON.stringify(data, null, 2));
-            console.log("This artist is playing at " + data.venue.name);
-            console.log("This venue is in " + data.venue.city + ", " + data.venue.region)
-            console.log("You can see " + artist + " in concert on " + convertedDate)
+            console.log(`${artist} is playing at ${data.venue.name}.`);
+            console.log(`This venue is in ${data.venue.city}, ${data.venue.region}.`)
+            console.log(`You can see ${artist} in concert on ${convertedDate}.`)
 
-            console.log(artist + " is playing at " + data.venue.name + " in " + data.venue.city + ", " + data.venue.region + " on " + convertedDate)
         }).catch(function (error) {
             console.log(error);
         });
@@ -63,10 +64,10 @@ function spotifyThis(song) {
         }
 
         var data = data.tracks.items[0];
-        console.log("Artist(s) Name: " + data.artists[0].name);
-        console.log("Song's Name: " + data.name);
-        console.log("Preview Link: " + data.preview_url);
-        console.log("Album: " + data.album.name);
+        console.log(`Artist(s) Name: ${data.artists[0].name}`);
+        console.log(`Song Name: ${data.name}`);
+        console.log(`Preview Link: ${data.preview_url}`);
+        console.log(`Album: ${data.album.name}`);
 
     });
 }
@@ -81,14 +82,14 @@ function movieThis(movie) {
     axios.get(omdbURL).then(
         function (response) {
             var data = response.data
-            console.log("Title:" + data.Title);
-            console.log("Year:" + data.Year)
-            console.log("IMBD Rating: " + data.Ratings[0].Value)
-            console.log("Rotten Tomatoes Rating: " + data.Ratings[1].Value)
-            console.log("Country Produced: " + data.Country)
-            console.log("Language:" + data.Language)
-            console.log("Plot: " + data.Plot)
-            console.log("actors: " + data.Actors)
+            console.log(`Title: ${data.Title}`);
+            console.log(`Movie release year: ${data.Year}`)
+            console.log(`IMBD rating: ${data.Ratings[0].Value}`)
+            console.log(`Rotten Tomatoes rating: ${data.Ratings[1].Value}`)
+            console.log(`Country where ${movie} was produced: ${data.Country}`)
+            console.log(`Language: ${data.Language}`)
+            console.log(`Plot: ${data.Plot}`)
+            console.log(`Actors in ${movie} include: ${data.Actors}`)
             // console.log(artist + " is playing at " + data.venue.name + " in " + data.venue.city + ", " + data.venue.region + " on " + convertedDate)
         }).catch(function (error) {
             console.log(error);
@@ -103,10 +104,8 @@ function whatSays() {
             console.log(err);
         }
         var dataArr = data.split(",");
-        console.log(dataArr);
         switchFunc(dataArr[0], dataArr[1])
     })
 
 };
-
 
