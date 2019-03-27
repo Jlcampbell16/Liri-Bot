@@ -1,6 +1,6 @@
 # Liri-Bot
 
-**Overview**
+**Overview:**
 LIRI is like iPhone's SIRI. However, while SIRI is a Speech Interpretation and Recognition Interface, LIRI is a Language Interpretation and Recognition Interface. LIRI is a command line node app that takes in the following parameters and gives you back data from the Bands in Town, Spotify, and OMDB API.
 
     Try using the following commands: 
@@ -9,10 +9,10 @@ LIRI is like iPhone's SIRI. However, while SIRI is a Speech Interpretation and R
         * movie-this
         * do-what-it-says
 
-**Watch How It Works**
+**Watch How It Works:**
 https://drive.google.com/file/d/1Ohrz0LFIrJBSw4LRlXb71bTZItkDF4j-/view
 
-**Additional Notes**
+**Additional Notes:**
 If you want to run this application locally you will need to create a .env file with your own spotify API keys. 
 
     The following text should be added in your file: 
@@ -25,5 +25,5 @@ SPOTIFY_SECRET=your-spotify-secret
 
 ```
 
-**Technology Used** 
+**Technology Used:** 
 Node.js
